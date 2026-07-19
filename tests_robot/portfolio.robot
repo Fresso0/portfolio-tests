@@ -19,6 +19,9 @@ Ouvrir Le Portfolio
 Aller Au Formulaire De Contact
     Execute Javascript    document.getElementById('contact').scrollIntoView();
 
+Soumettre Le Formulaire
+    Execute Javascript    document.querySelector('#contactForm .send').click();
+    
 *** Test Cases ***
 La Page D'Accueil S'Affiche
     [Documentation]    Le titre de l'onglet identifie le portfolio.
@@ -55,5 +58,5 @@ Le Formulaire Refuse Un Message Trop Court
     Input Text    id:name     Testeur
     Input Text    id:email    test@example.com
     Input Text    id:msg      Trop court
-    Click Element    css:#contactForm .send
+    Soumettre Le Formulaire
     Wait Until Element Is Visible    css:#fMsg .ferr    timeout=5s

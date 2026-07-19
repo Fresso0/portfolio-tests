@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.6 on win32)" generated="2026-07-19T14:34:19.010937" rpa="false" schemaversion="5">
+<suite id="s1" name="Portfolio-Tests" source="C:\Users\HP 850 G4\Downloads\portfolio-tests">
+<suite id="s1-s1" name="Tests Robot" source="C:\Users\HP 850 G4\Downloads\portfolio-tests\tests_robot">
+<suite id="s1-s1-s1" name="Portfolio" source="C:\Users\HP 850 G4\Downloads\portfolio-tests\tests_robot\portfolio.robot">
+<test id="s1-s1-s1-t1" name="Le Formulaire Refuse Un Message Trop Court" line="55">
+<kw name="Ouvrir Le Portfolio" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-19T14:34:19.621239" level="INFO">Opening browser 'headlesschrome' to base url 'https://fresnel.host'.</msg>
+<arg>${URL}</arg>
+<arg>${NAVIGATEUR}</arg>
+<arg>options=add_argument("--no-sandbox"); add_argument("--disable-dev-shm-usage")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-19T14:34:19.620269" elapsed="3.236001"/>
+</kw>
+<kw name="Set Window Size" owner="SeleniumLibrary">
+<arg>1366</arg>
+<arg>900</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" start="2026-07-19T14:34:22.856597" elapsed="0.034970"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>tag:h1</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-07-19T14:34:22.892117" elapsed="0.058101"/>
+</kw>
+<status status="PASS" start="2026-07-19T14:34:19.618600" elapsed="3.331947"/>
+</kw>
+<kw name="Aller Au Formulaire De Contact">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-19T14:34:22.952233" level="INFO">Executing JavaScript:
+document.getElementById('contact').scrollIntoView();
+Without any arguments.</msg>
+<arg>document.getElementById('contact').scrollIntoView();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-19T14:34:22.951761" elapsed="0.007513"/>
+</kw>
+<status status="PASS" start="2026-07-19T14:34:22.951147" elapsed="0.008442"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-19T14:34:22.967943" level="INFO">Typing text 'Testeur' into text field 'id:name'.</msg>
+<arg>id:name</arg>
+<arg>Testeur</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-19T14:34:22.964498" elapsed="0.221144"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-19T14:34:23.186753" level="INFO">Typing text 'test@example.com' into text field 'id:email'.</msg>
+<arg>id:email</arg>
+<arg>test@example.com</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-19T14:34:23.186119" elapsed="0.122752"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-19T14:34:23.309721" level="INFO">Typing text 'Trop court' into text field 'id:msg'.</msg>
+<arg>id:msg</arg>
+<arg>Trop court</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-19T14:34:23.309251" elapsed="0.108381"/>
+</kw>
+<kw name="Soumettre Le Formulaire">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-19T14:34:23.419118" level="INFO">Executing JavaScript:
+document.querySelector('#contactForm .send').click();
+Without any arguments.</msg>
+<arg>document.querySelector('#contactForm .send').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-19T14:34:23.418818" elapsed="0.015654"/>
+</kw>
+<status status="PASS" start="2026-07-19T14:34:23.418270" elapsed="0.016442"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>css:#fMsg .ferr</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-07-19T14:34:23.435027" elapsed="0.025402"/>
+</kw>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-07-19T14:34:23.471094" elapsed="2.248624"/>
+</kw>
+<doc>La règle « 7 mots minimum » rend visible l'erreur du message.</doc>
+<status status="PASS" start="2026-07-19T14:34:19.602396" elapsed="6.117734"/>
+</test>
+<doc>Tests d'acceptance du portfolio fresnel.host (SPA) avec Robot Framework.
+Lancement :  robot -d resultats tests_robot/</doc>
+<status status="PASS" start="2026-07-19T14:34:19.121896" elapsed="6.605819"/>
+</suite>
+<status status="PASS" start="2026-07-19T14:34:19.107574" elapsed="6.624776"/>
+</suite>
+<status status="PASS" start="2026-07-19T14:34:19.023086" elapsed="6.714865"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Portfolio-Tests" id="s1" pass="1" fail="0" skip="0">Portfolio-Tests</stat>
+<stat name="Tests Robot" id="s1-s1" pass="1" fail="0" skip="0">Portfolio-Tests.Tests Robot</stat>
+<stat name="Portfolio" id="s1-s1-s1" pass="1" fail="0" skip="0">Portfolio-Tests.Tests Robot.Portfolio</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
