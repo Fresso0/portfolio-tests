@@ -1,0 +1,5 @@
+__pycache__/
+resultats/
+*.pyc
+rapport-selenium.xml
+.pytest_cache/

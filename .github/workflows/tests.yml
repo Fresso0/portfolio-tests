@@ -1,0 +1,66 @@
+name: Tests automatisés du portfolio
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *"   # tous les jours à 6h UTC : surveille que le site reste sain
+  workflow_dispatch:        # bouton "Run workflow" manuel dans l'onglet Actions
+
+jobs:
+  selenium:
+    name: Tests Selenium (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Lancer les tests Selenium
+        run: pytest tests_selenium/ -v --junitxml=rapport-selenium.xml
+
+      - name: Publier le rapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-selenium
+          path: rapport-selenium.xml
+
+  robot:
+    name: Tests Robot Framework
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Lancer la suite Robot Framework
+        run: robot --outputdir resultats tests_robot/
+
+      - name: Publier les rapports HTML (log.html, report.html)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapports-robot
+          path: resultats/
