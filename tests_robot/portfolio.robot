@@ -46,7 +46,7 @@ Le Formulaire Refuse Un Email Invalide
     Input Text    id:name     Testeur
     Input Text    id:email    pas-un-email
     Input Text    id:msg      Ceci est un message assez long pour être valide
-    Click Element    css:#contactForm .send
+    Execute Javascript    document.querySelector('#contactForm .send').click();
     Wait Until Element Is Visible    css:#fEmail .ferr    timeout=5s
 
 Le Formulaire Refuse Un Message Trop Court
