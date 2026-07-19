@@ -98,7 +98,9 @@ def _remplir_formulaire(driver, nom, email, message):
     driver.find_element(By.ID, "name").send_keys(nom)
     driver.find_element(By.ID, "email").send_keys(email)
     driver.find_element(By.ID, "msg").send_keys(message)
-    driver.find_element(By.CSS_SELECTOR, "#contactForm .send").click()
+    driver.execute_script(
+        "document.querySelector('#contactForm .send').click();"
+    )
 
 
 def test_formulaire_refuse_email_invalide(driver):
